@@ -4,6 +4,8 @@
 import unittest
 
 
+from .helpers import MafTestCase
+
 from math import sin, cos
 
 from maf import (
@@ -24,29 +26,7 @@ class MatrixTest(unittest.TestCase):
         pass
 
 
-class MathTestCase(unittest.TestCase):
-
-    @staticmethod
-    def _norm(u):
-        return sum(
-          x*x
-          for x in u
-        )
-
-    @staticmethod
-    def _sub(u, v):
-        assert len(u) == len(v)
-        return [
-            a-b
-            for a, b in zip(u, v)
-        ]
-
-    def assertClose(self, u, v, d=0.00001):
-        assert self._norm(self._sub(u, v)) < d
-
-
-
-class JacobianTest(MathTestCase):
+class JacobianTest(MafTestCase):
 
     def test_gradient(self):
 
